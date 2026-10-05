@@ -160,10 +160,7 @@ function checkForMatch() {
     secondCard = null;
 
     if (matchedPairs === 8) {
-      victoryTimeout = setTimeout(() => {
-        finishGame();
-        victoryTimeout = null;
-      }, 600);
+      finishGame();
     }
 
     return;
@@ -218,9 +215,12 @@ function renderCards() {
 
 function finishGame() {
   isGameOver = true;
-
   saveResult();
-  showVictoryModal();
+
+  victoryTimeout = setTimeout(() => {
+        showVictoryModal();
+        victoryTimeout = null;
+      }, 600);
 }
 
 startNewGame();
